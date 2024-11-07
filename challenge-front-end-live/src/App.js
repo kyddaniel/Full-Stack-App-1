@@ -4,6 +4,7 @@ import ChallengeList from './componenets/ChallengeList';
 import axios from 'axios';
 
 import { useEffect, useState } from 'react';
+import AddChallenge from './componenets/AddChallenge';
 
 function App() {
 
@@ -15,16 +16,27 @@ function App() {
   const [challenges, setChallenges] = useState([]);
 
   useEffect(() => {
-    const fetchChallenges = async () => {
+    fetchChallenges();
+  }, []);
+
+  const handleChallengeAdded = () => {
+    fetchChallenges();
+  }
+
+  const fetchChallenges = async () => {
+    try {
       const response = await axios.get('http://localhost:8080/challenges');
       setChallenges(response.data);
-    };
-    fetchChallenges();
-  }, [])
+    } catch (error) {
+      console.log(error);
+    }
+    
+  };
 
   return (
     <div className="App">
       <h1>Monthly Challenge</h1>
+      <AddChallenge onChallengeAdded={handleChallengeAdded}/>
       <ChallengeList challenges={challenges}/>
       {/*<Greeting name="John" message="Welcome"/>
       <Greeting name="Alice" message="Hello"/>
