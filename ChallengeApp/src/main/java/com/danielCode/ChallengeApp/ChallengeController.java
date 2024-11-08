@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/challenges")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3002")
 public class ChallengeController {
 
     private ChallengeService challengeService;

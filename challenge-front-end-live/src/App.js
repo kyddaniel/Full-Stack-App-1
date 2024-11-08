@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { useEffect, useState } from 'react';
 import AddChallenge from './componenets/AddChallenge';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
@@ -34,8 +35,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Monthly Challenge</h1>
+    <div className="container mt-5">
+      <h1 className='text-center mb-4'>Monthly Challenge</h1>
       <AddChallenge onChallengeAdded={handleChallengeAdded}/>
       <ChallengeList challenges={challenges}/>
       {/*<Greeting name="John" message="Welcome"/>
